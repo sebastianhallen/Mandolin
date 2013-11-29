@@ -51,4 +51,74 @@
         [Test] public void Test43(){ Assert.Pass(); }
         [Test] public void Test44(){ Assert.Pass(); }
     }
+
+    [TestFixture]
+    public class GenericTests0
+        : GenericTestsBase<string>
+    {
+        [Test] public void TestInNonGenericInheritingGenericClass00() {}
+        [Test] public void TestInNonGenericInheritingGenericClass01() {}
+        [Test] public void TestInNonGenericInheritingGenericClass02() {}
+        [Test] public void TestInNonGenericInheritingGenericClass03() {}
+        [Test] public void TestInNonGenericInheritingGenericClass04() {}
+    }
+
+    [TestFixture]
+    public class GenericTests1
+        : GenericTestsBase<string>
+    {
+        [Test] public void TestInNonGenericInheritingGenericClass10() {}
+        [Test] public void TestInNonGenericInheritingGenericClass11() {}
+        [Test] public void TestInNonGenericInheritingGenericClass12() {}
+        [Test] public void TestInNonGenericInheritingGenericClass13() {}
+        [Test] public void TestInNonGenericInheritingGenericClass14() {}
+    }
+
+    [TestFixture]
+    public class GenericTests2
+        : GenericTestsBase<string>
+    {
+        [Test] public void TestInNonGenericInheritingGenericClass20() {}
+        [Test] public void TestInNonGenericInheritingGenericClass21() {}
+        [Test] public void TestInNonGenericInheritingGenericClass22() {}
+        [Test] public void TestInNonGenericInheritingGenericClass23() {}
+        [Test] public void TestInNonGenericInheritingGenericClass24() {}
+    }
+
+    [TestFixture]
+    public class GenericTests3
+        : GenericTestsBase<string>
+    {
+        [Test] public void TestInNonGenericInheritingGenericClass30() {}
+        [Test] public void TestInNonGenericInheritingGenericClass31() {}
+        [Test] public void TestInNonGenericInheritingGenericClass32() {}
+        [Test] public void TestInNonGenericInheritingGenericClass33() {}
+        [Test] public void TestInNonGenericInheritingGenericClass34() {}
+    }
+
+    [TestFixture]
+    public class GenericTests4
+        : GenericTestsBase<string>
+    {
+        [Test] public void TestInNonGenericInheritingGenericClass40() {}
+        [Test] public void TestInNonGenericInheritingGenericClass41() {}
+        [Test] public void TestInNonGenericInheritingGenericClass42() {}
+        [Test] public void TestInNonGenericInheritingGenericClass43() {}
+        [Test] public void TestInNonGenericInheritingGenericClass44() {}
+    }
+
+    public class GenericTestsBase<T>
+    {
+        [TestCase]
+        public void GenericWithInput<TInner>(T classType, TInner methodType, object other)
+        {
+            Assert.Pass();
+        }
+
+        [Test]
+        public void StandardInsideGeneric()
+        {
+            Assert.Pass();
+        }
+    }
 }
