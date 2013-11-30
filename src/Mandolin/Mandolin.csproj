@@ -35,6 +35,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit-console-runner">
+      <HintPath>..\packages\NUnit.Runners.2.6.3\tools\lib\nunit-console-runner.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.core, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NUnit.Runners.2.6.3\tools\lib\nunit.core.dll</HintPath>
@@ -61,6 +64,7 @@
   <ItemGroup>
     <Compile Include="IMandolinRunner.cs" />
     <Compile Include="MandolinEventListener.cs" />
+    <Compile Include="Runners\NUnitConsoleMandolinRunner.cs" />
     <Compile Include="Runners\SimplifiedMandolinRunner.cs" />
     <Compile Include="Slicers\AlternatingSlicer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

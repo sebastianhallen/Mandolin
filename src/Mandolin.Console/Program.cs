@@ -9,10 +9,13 @@
     {
         static void Main(string[] args)
         {
-            var runner = new SimplifiedMandolinRunner(new AlternatingSlicer(), new MandolinEventListener());
+            
             var testAssemblyPath = Path.GetFullPath(@"..\..\..\Example.Tests\bin\Debug\Example.Tests.dll");
+            var simpleRunner = new SimplifiedMandolinRunner(new AlternatingSlicer(), new MandolinEventListener(), testAssemblyPath);
+            var nunitConsoleRunner = new NUnitConsoleMandolinRunner(testAssemblyPath);
 
-            var result = runner.Run(2, 5, testAssemblyPath);
+            var result = simpleRunner.Run(2, 5);
+            nunitConsoleRunner.Run(3, 4);
 
             Console.WriteLine(result);
         }

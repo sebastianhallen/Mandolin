@@ -14,19 +14,21 @@
     {
         private readonly ISlicer slicer;
         private readonly EventListener eventListener;
+        private readonly string[] testAssemblies;
 
-        public SimplifiedMandolinRunner(ISlicer slicer, EventListener eventListener)
+        public SimplifiedMandolinRunner(ISlicer slicer, EventListener eventListener, params string[] testAssemblies)
         {
             this.slicer = slicer;
             this.eventListener = eventListener;
+            this.testAssemblies = testAssemblies;
         }
 
-        public string Run(int wantedSlice, int totalSlices, params string[] testAssemblies)
+        public string Run(int wantedSlice, int totalSlices)
         {
             CoreExtensions.Host.InitializeService();
             var runner = new SimpleTestRunner();
 
-            var package = new TestPackage("tests", testAssemblies);
+            var package = new TestPackage("tests", this.testAssemblies);
 
             if (runner.Load(package))
             {

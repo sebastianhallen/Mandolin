@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Runners\NUnitConsoleCommandLineParserTests.cs" />
     <Compile Include="Slicers\SequentialGroupTests.cs" />
     <Compile Include="Slicers\AlternatingSlicerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
