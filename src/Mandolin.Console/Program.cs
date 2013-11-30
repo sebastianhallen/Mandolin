@@ -13,7 +13,7 @@
 
             var testAssemblyPath = Path.GetFullPath(@"..\..\..\Example.Tests\bin\Debug\Example.Tests.dll");
             var simpleRunner = new SimplifiedMandolinRunner(new AlternatingSlicer(), testAssemblyPath);
-            var nunitConsoleRunner = new NUnitConsoleMandolinRunner(args);
+            var nunitConsoleRunner = new NUnitConsoleMandolinRunner(new NUnitConsoleFacade(), new AlternatingSlicer(), args);
 
             var result = simpleRunner.Run(2, 5);
             nunitConsoleRunner.Run(3, 4);
