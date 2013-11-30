@@ -52,12 +52,26 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="nunit-agent-x86.exe.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="nunit-agent.exe.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mandolin\Mandolin.csproj">
       <Project>{67bb7020-d005-4c56-ba39-98f3af7fbc9f}</Project>
       <Name>Mandolin</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="nunit-agent-x86.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="nunit-agent.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

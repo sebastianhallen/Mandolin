@@ -6,10 +6,12 @@
     public class NUnitConsoleMandolinRunner
         : IMandolinRunner
     {
+        private readonly string[] args;
         private ConsoleOptions options;
 
         public NUnitConsoleMandolinRunner(params string[] args)
         {
+            this.args = args;
             this.options = new ConsoleOptions(args);
         }
 
@@ -21,7 +23,7 @@
 
         private string[] CreateArguments(int wantedSlice, int totalSlices)
         {
-            throw new NotImplementedException();
+            return this.args;
         }
     }
 }
