@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E809D2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mandolin.Tests", "Mandolin.Tests\Mandolin.Tests.csproj", "{5CF085A5-FEA9-41F7-B283-227138F4DA67}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mandolin.Console", "Mandolin.Console\Mandolin.Console.csproj", "{64372A6A-7122-43C7-A735-F2578592804E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{5CF085A5-FEA9-41F7-B283-227138F4DA67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CF085A5-FEA9-41F7-B283-227138F4DA67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CF085A5-FEA9-41F7-B283-227138F4DA67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64372A6A-7122-43C7-A735-F2578592804E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64372A6A-7122-43C7-A735-F2578592804E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64372A6A-7122-43C7-A735-F2578592804E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64372A6A-7122-43C7-A735-F2578592804E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

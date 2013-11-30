@@ -1,11 +1,11 @@
-﻿namespace Mandolin
+﻿namespace Mandolin.Console
 {
-    using System;
-    using System.Text;
     using Mandolin.Slicers;
-    using System.IO;
     using NUnit.Core;
     using NUnit.Util;
+    using System.IO;
+    using System.Text;
+    using Console = System.Console;
 
     class Program
     {
