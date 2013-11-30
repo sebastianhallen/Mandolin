@@ -1,23 +1,27 @@
-﻿namespace Mandolin
+﻿namespace Mandolin.Runners
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
+    using System.Text;
     using NUnit.Core;
     using NUnit.Core.Filters;
+    using NUnit.Util;
 
-    public class MandolinRunner
+    public class SimplifiedMandolinRunner
+        : IMandolinRunner
     {
         private readonly ISlicer slicer;
         private readonly EventListener eventListener;
 
-        public MandolinRunner(ISlicer slicer, EventListener eventListener)
+        public SimplifiedMandolinRunner(ISlicer slicer, EventListener eventListener)
         {
             this.slicer = slicer;
             this.eventListener = eventListener;
         }
 
-        public TestResult Run(int wantedSlice, int totalSlices, params string[] testAssemblies)
+        public string Run(int wantedSlice, int totalSlices, params string[] testAssemblies)
         {
             CoreExtensions.Host.InitializeService();
             var runner = new SimpleTestRunner();
@@ -31,7 +35,7 @@
                 var filter = new SimpleNameFilter(slicedTests.ToArray());
                 var result = runner.Run(this.eventListener, filter, true, LoggingThreshold.All);
 
-                return result;
+                return CreateXmlOutput(result);
             }
 
             throw new Exception("Unable to load test package");
@@ -54,6 +58,14 @@
                     yield return testName;
                 }
             }
+        }
+
+        private static string CreateXmlOutput(TestResult result)
+        {
+            var builder = new StringBuilder();
+            new XmlResultWriter(new StringWriter(builder)).SaveTestResult(result);
+
+            return builder.ToString();
         }
     }
 }

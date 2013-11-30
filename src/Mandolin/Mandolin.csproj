@@ -59,8 +59,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IMandolinRunner.cs" />
     <Compile Include="MandolinEventListener.cs" />
-    <Compile Include="MandolinRunner.cs" />
+    <Compile Include="Runners\SimplifiedMandolinRunner.cs" />
     <Compile Include="Slicers\AlternatingSlicer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Slicers\SequentialGroupsSlicer.cs" />
