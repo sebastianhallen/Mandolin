@@ -16,10 +16,10 @@
         private readonly EventListener eventListener;
         private readonly string[] testAssemblies;
 
-        public SimplifiedMandolinRunner(ISlicer slicer, EventListener eventListener, params string[] testAssemblies)
+        public SimplifiedMandolinRunner(ISlicer slicer, params string[] testAssemblies)
         {
             this.slicer = slicer;
-            this.eventListener = eventListener;
+            this.eventListener = new MandolinEventListener();
             this.testAssemblies = testAssemblies;
         }
 
@@ -68,6 +68,46 @@
             new XmlResultWriter(new StringWriter(builder)).SaveTestResult(result);
 
             return builder.ToString();
+        }
+
+        private class MandolinEventListener
+            : EventListener
+        {
+            public void RunStarted(string name, int testCount)
+            {
+            }
+
+            public void RunFinished(TestResult result)
+            {
+            }
+
+            public void RunFinished(Exception exception)
+            {
+            }
+
+            public void TestStarted(TestName testName)
+            {
+            }
+
+            public void TestFinished(TestResult result)
+            {
+            }
+
+            public void SuiteStarted(TestName testName)
+            {
+            }
+
+            public void SuiteFinished(TestResult result)
+            {
+            }
+
+            public void UnhandledException(Exception exception)
+            {
+            }
+
+            public void TestOutput(TestOutput testOutput)
+            {
+            }
         }
     }
 }

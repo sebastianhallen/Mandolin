@@ -11,7 +11,7 @@
         {
             
             var testAssemblyPath = Path.GetFullPath(@"..\..\..\Example.Tests\bin\Debug\Example.Tests.dll");
-            var simpleRunner = new SimplifiedMandolinRunner(new AlternatingSlicer(), new MandolinEventListener(), testAssemblyPath);
+            var simpleRunner = new SimplifiedMandolinRunner(new AlternatingSlicer(), testAssemblyPath);
             var nunitConsoleRunner = new NUnitConsoleMandolinRunner(testAssemblyPath);
 
             var result = simpleRunner.Run(2, 5);

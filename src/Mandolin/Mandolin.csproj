@@ -63,7 +63,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IMandolinRunner.cs" />
-    <Compile Include="MandolinEventListener.cs" />
     <Compile Include="Runners\NUnitConsoleMandolinRunner.cs" />
     <Compile Include="Runners\SimplifiedMandolinRunner.cs" />
     <Compile Include="Slicers\AlternatingSlicer.cs" />
