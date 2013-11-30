@@ -56,55 +56,55 @@
     public class GenericTests0
         : GenericTestsBase<string>
     {
-        [Test] public void TestInNonGenericInheritingGenericClass00() {}
-        [Test] public void TestInNonGenericInheritingGenericClass01() {}
-        [Test] public void TestInNonGenericInheritingGenericClass02() {}
-        [Test] public void TestInNonGenericInheritingGenericClass03() {}
-        [Test] public void TestInNonGenericInheritingGenericClass04() {}
+        [Test, Category("DontRun")]     public void TestInNonGenericInheritingGenericClass00() { Assert.Fail(); }
+        [Test, Category("MustRun")]     public void TestInNonGenericInheritingGenericClass01() { Assert.Pass(); }
+        [Test, Category("NeverRun")]    public void TestInNonGenericInheritingGenericClass02() { Assert.Fail(); }
+        [Test, Category("ShouldRun")]   public void TestInNonGenericInheritingGenericClass03() { Assert.Pass(); }
+        [Test, Category("Other")]       public void TestInNonGenericInheritingGenericClass04() { Assert.Pass(); }
     }
 
     [TestFixture]
     public class GenericTests1
         : GenericTestsBase<string>
     {
-        [Test] public void TestInNonGenericInheritingGenericClass10() {}
-        [Test] public void TestInNonGenericInheritingGenericClass11() {}
-        [Test] public void TestInNonGenericInheritingGenericClass12() {}
-        [Test] public void TestInNonGenericInheritingGenericClass13() {}
-        [Test] public void TestInNonGenericInheritingGenericClass14() {}
+        [Test, Category("DontRun")]     public void TestInNonGenericInheritingGenericClass10() { Assert.Fail(); }
+        [Test, Category("MustRun")]     public void TestInNonGenericInheritingGenericClass11() { Assert.Pass(); }
+        [Test, Category("NeverRun")]    public void TestInNonGenericInheritingGenericClass12() { Assert.Fail(); }
+        [Test, Category("ShouldRun")]   public void TestInNonGenericInheritingGenericClass13() { Assert.Pass(); }
+        [Test, Category("Other")]       public void TestInNonGenericInheritingGenericClass14() { Assert.Pass(); }
     }
 
     [TestFixture]
     public class GenericTests2
         : GenericTestsBase<string>
     {
-        [Test] public void TestInNonGenericInheritingGenericClass20() {}
-        [Test] public void TestInNonGenericInheritingGenericClass21() {}
-        [Test] public void TestInNonGenericInheritingGenericClass22() {}
-        [Test] public void TestInNonGenericInheritingGenericClass23() {}
-        [Test] public void TestInNonGenericInheritingGenericClass24() {}
+        [Test, Category("DontRun")]     public void TestInNonGenericInheritingGenericClass20() { Assert.Fail(); }
+        [Test, Category("MustRun")]     public void TestInNonGenericInheritingGenericClass21() { Assert.Pass(); }
+        [Test, Category("NeverRun")]    public void TestInNonGenericInheritingGenericClass22() { Assert.Fail(); }
+        [Test, Category("ShouldRun")]   public void TestInNonGenericInheritingGenericClass23() { Assert.Pass(); }
+        [Test, Category("Other")]       public void TestInNonGenericInheritingGenericClass24() { Assert.Pass(); }
     }
 
     [TestFixture]
     public class GenericTests3
         : GenericTestsBase<string>
     {
-        [Test] public void TestInNonGenericInheritingGenericClass30() {}
-        [Test] public void TestInNonGenericInheritingGenericClass31() {}
-        [Test] public void TestInNonGenericInheritingGenericClass32() {}
-        [Test] public void TestInNonGenericInheritingGenericClass33() {}
-        [Test] public void TestInNonGenericInheritingGenericClass34() {}
+        [Test, Category("DontRun")]     public void TestInNonGenericInheritingGenericClass30() { Assert.Fail(); }
+        [Test, Category("MustRun")]     public void TestInNonGenericInheritingGenericClass31() { Assert.Pass(); }
+        [Test, Category("NeverRun")]    public void TestInNonGenericInheritingGenericClass32() { Assert.Fail(); }
+        [Test, Category("ShouldRun")]   public void TestInNonGenericInheritingGenericClass33() { Assert.Pass(); }
+        [Test, Category("Other")]       public void TestInNonGenericInheritingGenericClass34() { Assert.Pass(); }
     }
 
     [TestFixture]
     public class GenericTests4
         : GenericTestsBase<string>
     {
-        [Test] public void TestInNonGenericInheritingGenericClass40() {}
-        [Test] public void TestInNonGenericInheritingGenericClass41() {}
-        [Test] public void TestInNonGenericInheritingGenericClass42() {}
-        [Test] public void TestInNonGenericInheritingGenericClass43() {}
-        [Test] public void TestInNonGenericInheritingGenericClass44() {}
+        [Test, Category("DontRun")]     public void TestInNonGenericInheritingGenericClass40() { Assert.Fail(); }
+        [Test, Category("MustRun")]     public void TestInNonGenericInheritingGenericClass41() { Assert.Pass(); }
+        [Test, Category("NeverRun")]    public void TestInNonGenericInheritingGenericClass42() { Assert.Fail(); }
+        [Test, Category("ShouldRun")]   public void TestInNonGenericInheritingGenericClass43() { Assert.Pass(); }
+        [Test, Category("Other")]       public void TestInNonGenericInheritingGenericClass44() { Assert.Pass(); }
     }
 
     public class GenericTestsBase<T>
