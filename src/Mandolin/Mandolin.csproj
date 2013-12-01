@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="IMandolinRunner.cs" />
     <Compile Include="Runners\INUnitConsoleFacade.cs" />
+    <Compile Include="Runners\NUnitConsoleCommandLineArgumentSlicer.cs" />
     <Compile Include="Runners\NUnitConsoleFacade.cs" />
     <Compile Include="Runners\NUnitConsoleMandolinRunner.cs" />
     <Compile Include="Runners\SimplifiedMandolinRunner.cs" />
