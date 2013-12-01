@@ -1,5 +1,6 @@
 ﻿namespace Mandolin.Runners
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using NUnit.ConsoleRunner;
@@ -15,21 +16,40 @@
 
         public string[] Slice(string[] args, int wantedSlice, int totalSlices)
         {
-            var arguments = args.Select(this.ToArgumentPair)
-                .ToDictionary(arg => arg.Key.ToLowerInvariant(), arg => arg.Value);
+            var arguments = ToArgumentDictionary(args);
 
-            var runArguments = arguments.Where(arg => arg.Key.TrimStart('-', '/').Equals("run")).ToArray();
+            var runArguments = GetNamedArgument(arguments, "run");
             if (runArguments.Any())
             {
+                //use existing run argument
                 var run = runArguments.First().Value;
                 var slice = this.slicer.Slice(run.Split(','), wantedSlice, totalSlices);
 
-                return this.ReAssembleArguments(arguments.Except(runArguments), slice);
+                return ReAssembleArguments(arguments.Except(runArguments), slice);
             }
+
+
             return args;
         }
 
-        private KeyValuePair<string, string> ToArgumentPair(string arg)
+        private static KeyValuePair<string, string>[] GetNamedArgument(Dictionary<string, string> allArguments, string namedArgument)
+        {
+            return
+                allArguments.Where(
+                    arg =>
+                    arg.Key.TrimStart('-', '/').Equals(namedArgument, StringComparison.InvariantCultureIgnoreCase)
+                ).ToArray();
+
+        }
+
+        private static Dictionary<string, string> ToArgumentDictionary(string[] args)
+        {
+            var arguments = args.Select(ToArgumentPair)
+                                .ToDictionary(arg => arg.Key.ToLowerInvariant(), arg => arg.Value);
+            return arguments;
+        }
+
+        private static KeyValuePair<string, string> ToArgumentPair(string arg)
         {
             var parts = arg.Split(':');
 
@@ -44,7 +64,7 @@
             return new KeyValuePair<string, string>(parts[0], null);
         }
 
-        private string[] ReAssembleArguments(IEnumerable<KeyValuePair<string, string>> arguments, IEnumerable<string> slices)
+        private static string[] ReAssembleArguments(IEnumerable<KeyValuePair<string, string>> arguments, IEnumerable<string> slices)
         {
             return arguments
                 .Select(kvp => kvp.Value == null 
