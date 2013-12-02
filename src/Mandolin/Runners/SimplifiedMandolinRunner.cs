@@ -25,7 +25,6 @@
 
         public string Run(int wantedSlice, int totalSlices)
         {
-            CoreExtensions.Host.InitializeService();
             using (var runner = new SimpleTestRunner())
             {
                 var package = new TestPackage("tests", this.testAssemblies);
