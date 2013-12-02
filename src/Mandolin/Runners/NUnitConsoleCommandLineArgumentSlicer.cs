@@ -8,28 +8,48 @@
     public class NUnitConsoleCommandLineArgumentSlicer
     {
         private readonly ISlicer slicer;
+        private readonly ITestSuiteExtractor suiteExtractor;
 
-        public NUnitConsoleCommandLineArgumentSlicer(ISlicer slicer)
+        public NUnitConsoleCommandLineArgumentSlicer(ISlicer slicer, ITestSuiteExtractor suiteExtractor)
         {
             this.slicer = slicer;
+            this.suiteExtractor = suiteExtractor;
         }
 
         public string[] Slice(string[] args, int wantedSlice, int totalSlices)
         {
+            var options = new ConsoleOptions(args);
+            var matchingTests = this.suiteExtractor.FindMatchingTests(options, options.Parameters.OfType<string>().ToArray());
+            
+            var slice = this.slicer.Slice(matchingTests, wantedSlice, totalSlices);
+
+            return ReAssembleArguments(args, slice);
+        }
+
+        private static string[] ReAssembleArguments(string[] args, IEnumerable<string> slices)
+        {
             var arguments = ToArgumentDictionary(args);
+            var argumentsToRemove = new[] { "run", "runlist" }.SelectMany(arg => GetNamedArgument(arguments, arg));
 
-            var runArguments = GetNamedArgument(arguments, "run");
-            if (runArguments.Any())
-            {
-                //use existing run argument
-                var run = runArguments.First().Value;
-                var slice = this.slicer.Slice(run.Split(','), wantedSlice, totalSlices);
+            var runArgument = slices.ToArray().Any()
+                                  ? new[] { new KeyValuePair<string, string>("/run", string.Join(",", slices)) }
+                                  : new[] { new KeyValuePair<string, string>("/run", "NoMatchingTestsInSlice") };
 
-                return ReAssembleArguments(arguments.Except(runArguments), slice);
-            }
-
-
-            return args;
+            return arguments
+                .Except(argumentsToRemove)
+                .Concat(runArgument)
+                .OrderBy(kvp => kvp.Value == null)
+                .ThenByDescending(kvp => kvp.Key.StartsWith("-") || kvp.Key.StartsWith("/"))
+                .Select(kvp =>
+                {
+                    if (kvp.Value == null) return kvp.Key;
+                    var value = kvp.Value;
+                    value = value.Contains(" ")
+                                ? @"""" + value + @""""
+                                : value;
+                    return string.Format(@"{0}:{1}", kvp.Key, value);
+                })
+                .ToArray();
         }
 
         private static KeyValuePair<string, string>[] GetNamedArgument(Dictionary<string, string> allArguments, string namedArgument)
@@ -45,13 +65,13 @@
         private static Dictionary<string, string> ToArgumentDictionary(string[] args)
         {
             var arguments = args.Select(ToArgumentPair)
-                                .ToDictionary(arg => arg.Key.ToLowerInvariant(), arg => arg.Value);
+                                .ToDictionary(arg => arg.Key, arg => arg.Value);
             return arguments;
         }
 
         private static KeyValuePair<string, string> ToArgumentPair(string arg)
         {
-            var parts = arg.Split(':');
+            var parts = arg.Split(':', '=');
 
             if (parts.Count() == 2)
             {
@@ -62,16 +82,6 @@
             }
 
             return new KeyValuePair<string, string>(parts[0], null);
-        }
-
-        private static string[] ReAssembleArguments(IEnumerable<KeyValuePair<string, string>> arguments, IEnumerable<string> slices)
-        {
-            return arguments
-                .Select(kvp => kvp.Value == null 
-                    ? kvp.Key
-                    : string.Format(@"--{0}:""{1}""", kvp.Key, kvp.Value))
-                .Concat(new [] { "--run:" + string.Join(",", slices)})
-                .ToArray();
         }
     }
 }

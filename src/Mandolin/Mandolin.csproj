@@ -68,6 +68,7 @@
     <Compile Include="Runners\NUnitConsoleFacade.cs" />
     <Compile Include="Runners\NUnitConsoleMandolinRunner.cs" />
     <Compile Include="Runners\SimplifiedMandolinRunner.cs" />
+    <Compile Include="Runners\TestSuiteExtractor.cs" />
     <Compile Include="Slicers\AlternatingSlicer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Slicers\SequentialGroupsSlicer.cs" />

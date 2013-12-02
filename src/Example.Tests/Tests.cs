@@ -2,7 +2,7 @@
 {
     using NUnit.Framework;
 
-    [TestFixture]
+    [TestFixture, Category("ShouldRun")]
     public class Tests0
     {
         [Test] public void Test00(){ Assert.Pass(); }
@@ -11,8 +11,8 @@
         [Test] public void Test03(){ Assert.Pass(); }
         [Test] public void Test04(){ Assert.Pass(); }
     }
-    
-    [TestFixture]
+
+    [TestFixture, Category("ShouldRun")]
     public class Tests1
     {
         [Test] public void Test10(){ Assert.Pass(); }
@@ -22,7 +22,7 @@
         [Test] public void Test14(){ Assert.Pass(); }
     }
 
-    [TestFixture]
+    [TestFixture, Category("ShouldRun")]
     public class Tests2
     {
         [Test] public void Test20(){ Assert.Pass(); }
@@ -32,7 +32,7 @@
         [Test] public void Test24(){ Assert.Pass(); }
     }
 
-    [TestFixture]
+    [TestFixture, Category("ShouldRun")]
     public class Tests3
     {
         [Test] public void Test30(){ Assert.Pass(); }
@@ -42,7 +42,7 @@
         [Test] public void Test34(){ Assert.Pass(); }
     }
 
-    [TestFixture]
+    [TestFixture, Category("ShouldRun")]
     public class Tests4
     {
         [Test] public void Test40(){ Assert.Pass(); }

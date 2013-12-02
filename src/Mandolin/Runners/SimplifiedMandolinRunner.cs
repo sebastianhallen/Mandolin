@@ -26,18 +26,19 @@
         public string Run(int wantedSlice, int totalSlices)
         {
             CoreExtensions.Host.InitializeService();
-            var runner = new SimpleTestRunner();
-
-            var package = new TestPackage("tests", this.testAssemblies);
-
-            if (runner.Load(package))
+            using (var runner = new SimpleTestRunner())
             {
-                var allTests = GetFullTestNames(runner.Test);
-                var slicedTests = this.slicer.Slice(allTests, wantedSlice, totalSlices);
-                var filter = new SimpleNameFilter(slicedTests.ToArray());
-                var result = runner.Run(this.eventListener, filter, true, LoggingThreshold.All);
+                var package = new TestPackage("tests", this.testAssemblies);
 
-                return CreateXmlOutput(result);
+                if (runner.Load(package))
+                {
+                    var allTests = GetFullTestNames(runner.Test);
+                    var slicedTests = this.slicer.Slice(allTests, wantedSlice, totalSlices);
+                    var filter = new SimpleNameFilter(slicedTests.ToArray());
+                    var result = runner.Run(this.eventListener, filter, true, LoggingThreshold.All);
+
+                    return CreateXmlOutput(result);
+                }
             }
 
             throw new Exception("Unable to load test package");
