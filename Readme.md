@@ -10,13 +10,13 @@ If you can use PNUnit you probably should. :)
 ##How do I use Mandolin?
 Call Mandolin just like you would nunit-console.exe with the addition of an additional parameter to indicate which slice you want to run. 
 I.E.
-''''
+```
 nunit-console.exe /include:Nightly,LongRunning your-test-suite.dll
-''''
+```
 
 is replaced by
-''''
+```
 mandolin.console.exe /include:Nightly,LongRunning /slice:2of5 your-test-suite.dll
-''''
+```
 
 Notice the /slice:2of5 argument added. 
