@@ -71,17 +71,24 @@
 
         private static KeyValuePair<string, string> ToArgumentPair(string arg)
         {
-            var parts = arg.Split(':', '=');
+            var colonIndex = arg.IndexOf(':');
+            var equalsIndex = arg.IndexOf('=');
 
-            if (parts.Count() == 2)
+            if (colonIndex == -1) colonIndex = int.MaxValue;
+            if (equalsIndex == -1) equalsIndex = int.MaxValue;
+            var delimiter = colonIndex > equalsIndex ? "=" : ":";
+
+            var parts = arg.Split(new[] {delimiter}, StringSplitOptions.None);
+
+            if (parts.Count() >= 2)
             {
-                var value = parts[1];
+                var value = string.Join(delimiter, parts.Skip(1));
                 var key = parts[0];
 
                 return new KeyValuePair<string, string>(key, value);
             }
 
-            return new KeyValuePair<string, string>(parts[0], null);
+            return new KeyValuePair<string, string>(arg, null);
         }
     }
 }
