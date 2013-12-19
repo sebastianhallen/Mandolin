@@ -9,33 +9,36 @@
     {
         private readonly ISlicer slicer;
         private readonly ITestSuiteExtractor suiteExtractor;
+        private readonly IRunListBuilder runListBuilder;
 
-        public NUnitConsoleCommandLineArgumentSlicer(ISlicer slicer, ITestSuiteExtractor suiteExtractor)
+        public NUnitConsoleCommandLineArgumentSlicer(ISlicer slicer, ITestSuiteExtractor suiteExtractor, IRunListBuilder runListBuilder)
         {
             this.slicer = slicer;
             this.suiteExtractor = suiteExtractor;
+            this.runListBuilder = runListBuilder;
         }
 
-        public string[] Slice(string[] args, int wantedSlice, int totalSlices)
+        public IRunListFile Slice(string[] args, int wantedSlice, int totalSlices, out string[] slicedArgs)
         {
             var options = new ConsoleOptions(args);
             var matchingTests = this.suiteExtractor.FindMatchingTests(options, options.Parameters.OfType<string>().ToArray());
-            
+
             var slice = this.slicer.Slice(matchingTests, wantedSlice, totalSlices);
 
-            return ReAssembleArguments(args, slice);
+            return this.ReAssembleArguments(args, slice, out slicedArgs);
         }
 
-        private static string[] ReAssembleArguments(string[] args, IEnumerable<string> slices)
+        private IRunListFile ReAssembleArguments(string[] args, IEnumerable<string> slices, out string[] slicedArgs)
         {
             var arguments = ToArgumentDictionary(args);
             var argumentsToRemove = new[] { "run", "runlist" }.SelectMany(arg => GetNamedArgument(arguments, arg));
 
+            var runlist = this.runListBuilder.CreateRunList(slices);
             var runArgument = slices.ToArray().Any()
-                                  ? new[] { new KeyValuePair<string, string>("/run", string.Join(",", slices)) }
+                                  ? new[] { new KeyValuePair<string, string>("/runlist", runlist.Path) }
                                   : new[] { new KeyValuePair<string, string>("/run", "NoMatchingTestsInSlice") };
 
-            return arguments
+            slicedArgs = arguments
                 .Except(argumentsToRemove)
                 .Concat(runArgument)
                 .OrderBy(kvp => kvp.Value == null)
@@ -50,6 +53,8 @@
                     return string.Format(@"{0}:{1}", kvp.Key, value);
                 })
                 .ToArray();
+
+            return runlist;
         }
 
         private static KeyValuePair<string, string>[] GetNamedArgument(Dictionary<string, string> allArguments, string namedArgument)

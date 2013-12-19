@@ -1,14 +1,10 @@
 ﻿namespace Mandolin.Tests.Runners
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Linq.Expressions;
-    using System.Text;
-    using System.Threading.Tasks;
     using FakeItEasy;
     using Mandolin.Runners;
+    using NUnit.ConsoleRunner;
     using NUnit.Framework;
+    using System.Collections.Generic;
 
     [TestFixture]
     public class NUnitConsoleCommandLineArgumentSlicerTests
@@ -16,6 +12,7 @@
         [UnderTest] private NUnitConsoleCommandLineArgumentSlicer argumentSlicer;
         [Fake] private ISlicer slicer;
         [Fake] private ITestSuiteExtractor suiteExtractor;
+        [Fake] private IRunListBuilder runListBuilder;
 
         [SetUp]
         public void Before()
@@ -24,14 +21,30 @@
         }
 
         [Test]
-        public void Should_replace_existing_run_argument_with_sliced_version()
+        public void Should_replace_existing_run_argument_with_runlist_version()
         {
             var args = "test.dll /run:1,2,3,4".Split(' ');
+            var runlist = A.Fake<IRunListFile>();
             A.CallTo(() => this.slicer.Slice(A<IEnumerable<string>>._, 1, 2)).Returns(new[] {"1", "3"});
+            A.CallTo(() => this.runListBuilder.CreateRunList(A<IEnumerable<string>>._)).Returns(runlist);
+            A.CallTo(() => runlist.Path).Returns("some-runlist");
+            string[] slicedArguments;
 
-            var slicedArguments = this.argumentSlicer.Slice(args, 1, 2);
+            this.argumentSlicer.Slice(args, 1, 2, out slicedArguments);
 
-            Assert.That(slicedArguments, Is.EquivalentTo(new [] { "/run:1,3", "test.dll"}));
+            Assert.That(slicedArguments, Is.EquivalentTo(new [] { "/runlist:some-runlist", "test.dll"}));
+        }
+
+        [Test]
+        public void Should_use_matching_tests_from_suite_extractor_when_slicing()
+        {
+            var matchingTests = A.Fake<IEnumerable<string>>();
+            A.CallTo(() => this.suiteExtractor.FindMatchingTests(A<ConsoleOptions>._, A<string[]>._)).Returns(matchingTests);
+
+            string[] _;
+            this.argumentSlicer.Slice(new [] {"some.dll"}, 10, 20, out _);
+
+            A.CallTo(() => this.slicer.Slice(matchingTests, 10, 20)).MustHaveHappened();
         }
 
         [TestCase("/xml:C:\\somexml=output:with-a-rouge-colon=", "/xml:C:\\somexml=output:with-a-rouge-colon=")]
@@ -41,21 +54,37 @@
         public void Should_be_able_to_re_assemble_argument_with_mixed_equals_and_colon_chars(string arg, string expectedArg)
         {
             var args = ("test.dll " + arg).Split(' ');
+            string[] processedArgs;
+
             A.CallTo(() => this.slicer.Slice(A<IEnumerable<string>>._, 1, 1)).Returns(new[] { "1", "3" });
 
-            var processedArgs = this.argumentSlicer.Slice(args, 1, 1);
+            this.argumentSlicer.Slice(args, 1, 1, out processedArgs);
 
-            Assert.That(processedArgs, Is.EquivalentTo(new[] { expectedArg, "/run:1,3", "test.dll" }));
+            Assert.That(processedArgs, Is.EquivalentTo(new[] { expectedArg, "/runlist:", "test.dll" }));
         }
 
         [Test]
         public void Should_set_run_argument_to_a_non_matching_place_holder_test_when_no_matching_tests_can_be_found()
         {
             var args = "test.dll /xml:somexml=output:with-a-rouge-colon=".Split(' ');
+            string[] processedArgs;
 
-            var processedArgs = this.argumentSlicer.Slice(args, 1, 1);
+            this.argumentSlicer.Slice(args, 1, 1, out processedArgs);
 
             Assert.That(processedArgs, Is.EquivalentTo(new[] { "/xml:somexml=output:with-a-rouge-colon=", "/run:NoMatchingTestsInSlice", "test.dll" }));
+        }
+
+        [Test]
+        public void Should_use_run_list_builder_to_construct_run_list()
+        {
+            var args = new [] { "test.dll" };
+            string[] _;
+            A.CallTo(() => this.slicer.Slice(A<IEnumerable<string>>._, 1, 1)).Returns(new[] { "test1", "test2" });
+
+            this.argumentSlicer.Slice(args, 1, 1, out _);
+
+            A.CallTo(() => this.runListBuilder.CreateRunList(A<IEnumerable<string>>
+                .That.IsSameSequenceAs(new [] { "test1", "test2"} ))).MustHaveHappened();
         }
     }
 }

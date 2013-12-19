@@ -57,8 +57,9 @@
                                             .Select(asm => asm.Replace(magicStringPrefix, ""))
                                             .ToArray();
 
-            var slice = magicStringAssemblies.First();
-            if (magicStringAssemblies.Any() && TryGetSlice("/slice:"+slice, out candidateSliceNumber, out candidateTotalNumberOfSlices))
+            var slice = magicStringAssemblies.FirstOrDefault();
+
+            if (slice != null && TryGetSlice("/slice:" + slice, out candidateSliceNumber, out candidateTotalNumberOfSlices))
             {
                 assembly = string.Join(",", assemblies.Where(asm => !asm.Contains(magicStringPrefix)));
                 return true;

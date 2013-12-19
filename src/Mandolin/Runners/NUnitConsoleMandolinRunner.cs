@@ -18,20 +18,24 @@
 
         public string Run(int wantedSlice, int totalSlices)
         {
-            var arguments = this.CreateArguments(wantedSlice, totalSlices);
-            var result = this.nunitConsole.Run(arguments);
-
+            string[] slicedArgs;
+            int result;
+            using (var runlist = this.CreateArguments(wantedSlice, totalSlices, out slicedArgs))
+            {
+                 result = this.nunitConsole.Run(slicedArgs);
+            }
+            
             return new StringBuilder()
                 .AppendLine("Transformed arguments: ")
                 .AppendLine(string.Join(" ", this.args))
-                .AppendLine(string.Join(" ", arguments))
+                .AppendLine(string.Join(" ", slicedArgs))
                 .AppendLine("Exit code: " + result)
                 .ToString();
         }
 
-        private string[] CreateArguments(int wantedSlice, int totalSlices)
+        private IRunListFile CreateArguments(int wantedSlice, int totalSlices, out string[] slicedArgs)
         {
-            return this.argumentSlicer.Slice(this.args, wantedSlice, totalSlices);
+            return this.argumentSlicer.Slice(this.args, wantedSlice, totalSlices, out slicedArgs);
         }
     }
 }

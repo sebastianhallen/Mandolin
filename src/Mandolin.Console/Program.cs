@@ -19,7 +19,8 @@
 
             var slicer = new AlternatingSlicer();
             var suiteExtractor = new TestSuiteExtractor();
-            var argumentSlicer = new NUnitConsoleCommandLineArgumentSlicer(slicer, suiteExtractor);
+            var runListBuilder = new DefaultRunListBuilder();
+            var argumentSlicer = new NUnitConsoleCommandLineArgumentSlicer(slicer, suiteExtractor, runListBuilder);
 
             var nunitConsoleRunner = new NUnitConsoleMandolinRunner(new NUnitConsoleFacade(), argumentSlicer, cleanedArguments.ToArray());
 
