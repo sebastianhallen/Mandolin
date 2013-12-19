@@ -46,12 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Console\ArgumentPreProcessorTests.cs" />
     <Compile Include="Runners\NUnitConsoleCommandLineArgumentSlicerTests.cs" />
     <Compile Include="Slicers\SequentialGroupTests.cs" />
     <Compile Include="Slicers\AlternatingSlicerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Mandolin.Console\Mandolin.Console.csproj">
+      <Project>{64372a6a-7122-43c7-a735-f2578592804e}</Project>
+      <Name>Mandolin.Console</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Mandolin\Mandolin.csproj">
       <Project>{67bb7020-d005-4c56-ba39-98f3af7fbc9f}</Project>
       <Name>Mandolin</Name>
