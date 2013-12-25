@@ -18,6 +18,8 @@
 
         public IEnumerable<INUnitResult> All()
         {
+            if (string.IsNullOrWhiteSpace(this.path)) return Enumerable.Empty<INUnitResult>();
+
             return from file in Directory.GetFiles(path, "*.xml")
                         let xml = ParseXml(file)
                         from testCase in xml.Descendants(XName.Get("test-case"))

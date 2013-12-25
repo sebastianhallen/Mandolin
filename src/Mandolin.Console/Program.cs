@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using Mandolin.Runners;
-    using Mandolin.Slicers;
     using NUnit.Core;
     using Console = System.Console;
 
@@ -17,7 +16,7 @@
             int totalNumberOfSlices;
             ArgumentPreProcessor.Process(args, out currentSliceNumber, out totalNumberOfSlices, out cleanedArguments);
 
-            var slicer = new AlternatingSlicer();
+            var slicer = SlicerFactory.GetSlicer();
             var suiteExtractor = new TestSuiteExtractor();
             var runListBuilder = new DefaultRunListBuilder();
             var argumentSlicer = new NUnitConsoleCommandLineArgumentSlicer(slicer, suiteExtractor, runListBuilder);
