@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Users\Sebastian\Documents\GitHub\Mandolin\src\Example.Tests\bin\Debug\Example.Tests.dll" total="55" errors="0" failures="10" not-run="5" inconclusive="0" ignored="0" skipped="0" invalid="5" date="2013-12-25" time="11:44:06">
+  <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.6407" os-version="Microsoft Windows NT 6.2.9200.0" platform="Win32NT" cwd="C:\Users\Sebastian\Documents\GitHub\Mandolin\src" machine-name="BASSE" user="Sebastian" user-domain="BASSE" />
+  <culture-info current-culture="sv-SE" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="C:\Users\Sebastian\Documents\GitHub\Mandolin\src\Example.Tests\bin\Debug\Example.Tests.dll" executed="True" result="Failure" success="False" time="0.387" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="Example" executed="True" result="Failure" success="False" time="0.352" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="Tests" executed="True" result="Failure" success="False" time="0.352" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="GenericTests0" executed="True" result="Failure" success="False" time="0.227" asserts="0">
+                <results>
+                  <test-case name="Example.Tests.GenericTests0.GenericTestsBase`1.StandardInsideGeneric" executed="True" result="Success" success="True" time="23.052" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-suite type="ParameterizedTest" name="GenericWithInput" executed="True" result="Failure" success="False" time="0.004" asserts="0">
+                    <results>
+                      <test-case name="Example.Tests.GenericTests0.GenericWithInput&lt;TInner&gt;()" executed="False" result="NotRunnable">
+                        <reason>
+                          <message><![CDATA[No arguments were provided]]></message>
+                        </reason>
+                      </test-case>
+                    </results>
+                  </test-suite>
+                  <test-case name="Example.Tests.GenericTests0.TestInNonGenericInheritingGenericClass00" executed="True" result="Failure" success="False" time="12.002" asserts="0">
+                    <categories>
+                      <category name="DontRun" />
+                    </categories>
+                    <failure>
+                      <message><![CDATA[]]></message>
+                      <stack-trace><![CDATA[at Example.Tests.GenericTests0.TestInNonGenericInheritingGenericClass00() in c:\Users\Sebastian\Documents\GitHub\Mandolin\src\Example.Tests\Tests.cs:line 59
+]]></stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case name="Example.Tests.GenericTests0.TestInNonGenericInheritingGenericClass01" executed="True" result="Success" success="True" time="22.001" asserts="0">
+                    <categories>
+                      <category name="MustRun" />
+                    </categories>
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.GenericTests0.TestInNonGenericInheritingGenericClass02" executed="True" result="Failure" success="False" time="9.001" asserts="0">
+                    <categories>
+                      <category name="NeverRun" />
+                    </categories>
+                    <failure>
+                      <message><![CDATA[]]></message>
+                      <stack-trace><![CDATA[at Example.Tests.GenericTests0.TestInNonGenericInheritingGenericClass02() in c:\Users\Sebastian\Documents\GitHub\Mandolin\src\Example.Tests\Tests.cs:line 61
+]]></stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case name="Example.Tests.GenericTests0.TestInNonGenericInheritingGenericClass03" executed="True" result="Success" success="True" time="16.001" asserts="0">
+                    <categories>
+                      <category name="ShouldRun" />
+                    </categories>
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.GenericTests0.TestInNonGenericInheritingGenericClass04" executed="True" result="Success" success="True" time="10.001" asserts="0">
+                    <categories>
+                      <category name="Other" />
+                    </categories>
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="GenericTests1" executed="True" result="Failure" success="False" time="0.014" asserts="0">
+                <results>
+                  <test-case name="Example.Tests.GenericTests1.GenericTestsBase`1.StandardInsideGeneric" executed="True" result="Success" success="True" time="30.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-suite type="ParameterizedTest" name="GenericWithInput" executed="True" result="Failure" success="False" time="0.001" asserts="0">
+                    <results>
+                      <test-case name="Example.Tests.GenericTests1.GenericWithInput&lt;TInner&gt;()" executed="False" result="NotRunnable">
+                        <reason>
+                          <message><![CDATA[No arguments were provided]]></message>
+                        </reason>
+                      </test-case>
+                    </results>
+                  </test-suite>
+                  <test-case name="Example.Tests.GenericTests1.TestInNonGenericInheritingGenericClass10" executed="True" result="Failure" success="False" time="18.001" asserts="0">
+                    <categories>
+                      <category name="DontRun" />
+                    </categories>
+                    <failure>
+                      <message><![CDATA[]]></message>
+                      <stack-trace><![CDATA[at Example.Tests.GenericTests1.TestInNonGenericInheritingGenericClass10() in c:\Users\Sebastian\Documents\GitHub\Mandolin\src\Example.Tests\Tests.cs:line 70
+]]></stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case name="Example.Tests.GenericTests1.TestInNonGenericInheritingGenericClass11" executed="True" result="Success" success="True" time="26.001" asserts="0">
+                    <categories>
+                      <category name="MustRun" />
+                    </categories>
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.GenericTests1.TestInNonGenericInheritingGenericClass12" executed="True" result="Failure" success="False" time="14.001" asserts="0">
+                    <categories>
+                      <category name="NeverRun" />
+                    </categories>
+                    <failure>
+                      <message><![CDATA[]]></message>
+                      <stack-trace><![CDATA[at Example.Tests.GenericTests1.TestInNonGenericInheritingGenericClass12() in c:\Users\Sebastian\Documents\GitHub\Mandolin\src\Example.Tests\Tests.cs:line 72
+]]></stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case name="Example.Tests.GenericTests1.TestInNonGenericInheritingGenericClass13" executed="True" result="Success" success="True" time="5.001" asserts="0">
+                    <categories>
+                      <category name="ShouldRun" />
+                    </categories>
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.GenericTests1.TestInNonGenericInheritingGenericClass14" executed="True" result="Success" success="True" time="17.001" asserts="0">
+                    <categories>
+                      <category name="Other" />
+                    </categories>
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="GenericTests2" executed="True" result="Failure" success="False" time="0.017" asserts="0">
+                <results>
+                  <test-case name="Example.Tests.GenericTests2.GenericTestsBase`1.StandardInsideGeneric" executed="True" result="Success" success="True" time="10.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-suite type="ParameterizedTest" name="GenericWithInput" executed="True" result="Failure" success="False" time="0.001" asserts="0">
+                    <results>
+                      <test-case name="Example.Tests.GenericTests2.GenericWithInput&lt;TInner&gt;()" executed="False" result="NotRunnable">
+                        <reason>
+                          <message><![CDATA[No arguments were provided]]></message>
+                        </reason>
+                      </test-case>
+                    </results>
+                  </test-suite>
+                  <test-case name="Example.Tests.GenericTests2.TestInNonGenericInheritingGenericClass20" executed="True" result="Failure" success="False" time="17.001" asserts="0">
+                    <categories>
+                      <category name="DontRun" />
+                    </categories>
+                    <failure>
+                      <message><![CDATA[]]></message>
+                      <stack-trace><![CDATA[at Example.Tests.GenericTests2.TestInNonGenericInheritingGenericClass20() in c:\Users\Sebastian\Documents\GitHub\Mandolin\src\Example.Tests\Tests.cs:line 81
+]]></stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case name="Example.Tests.GenericTests2.TestInNonGenericInheritingGenericClass21" executed="True" result="Success" success="True" time="11.003" asserts="0">
+                    <categories>
+                      <category name="MustRun" />
+                    </categories>
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.GenericTests2.TestInNonGenericInheritingGenericClass22" executed="True" result="Failure" success="False" time="2.001" asserts="0">
+                    <categories>
+                      <category name="NeverRun" />
+                    </categories>
+                    <failure>
+                      <message><![CDATA[]]></message>
+                      <stack-trace><![CDATA[at Example.Tests.GenericTests2.TestInNonGenericInheritingGenericClass22() in c:\Users\Sebastian\Documents\GitHub\Mandolin\src\Example.Tests\Tests.cs:line 83
+]]></stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case name="Example.Tests.GenericTests2.TestInNonGenericInheritingGenericClass23" executed="True" result="Success" success="True" time="12.001" asserts="0">
+                    <categories>
+                      <category name="ShouldRun" />
+                    </categories>
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.GenericTests2.TestInNonGenericInheritingGenericClass24" executed="True" result="Success" success="True" time="18.001" asserts="0">
+                    <categories>
+                      <category name="Other" />
+                    </categories>
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="GenericTests3" executed="True" result="Failure" success="False" time="0.014" asserts="0">
+                <results>
+                  <test-case name="Example.Tests.GenericTests3.GenericTestsBase`1.StandardInsideGeneric" executed="True" result="Success" success="True" time="21.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-suite type="ParameterizedTest" name="GenericWithInput" executed="True" result="Failure" success="False" time="0.001" asserts="0">
+                    <results>
+                      <test-case name="Example.Tests.GenericTests3.GenericWithInput&lt;TInner&gt;()" executed="False" result="NotRunnable">
+                        <reason>
+                          <message><![CDATA[No arguments were provided]]></message>
+                        </reason>
+                      </test-case>
+                    </results>
+                  </test-suite>
+                  <test-case name="Example.Tests.GenericTests3.TestInNonGenericInheritingGenericClass30" executed="True" result="Failure" success="False" time="10.001" asserts="0">
+                    <categories>
+                      <category name="DontRun" />
+                    </categories>
+                    <failure>
+                      <message><![CDATA[]]></message>
+                      <stack-trace><![CDATA[at Example.Tests.GenericTests3.TestInNonGenericInheritingGenericClass30() in c:\Users\Sebastian\Documents\GitHub\Mandolin\src\Example.Tests\Tests.cs:line 92
+]]></stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case name="Example.Tests.GenericTests3.TestInNonGenericInheritingGenericClass31" executed="True" result="Success" success="True" time="27.001" asserts="0">
+                    <categories>
+                      <category name="MustRun" />
+                    </categories>
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.GenericTests3.TestInNonGenericInheritingGenericClass32" executed="True" result="Failure" success="False" time="25.001" asserts="0">
+                    <categories>
+                      <category name="NeverRun" />
+                    </categories>
+                    <failure>
+                      <message><![CDATA[]]></message>
+                      <stack-trace><![CDATA[at Example.Tests.GenericTests3.TestInNonGenericInheritingGenericClass32() in c:\Users\Sebastian\Documents\GitHub\Mandolin\src\Example.Tests\Tests.cs:line 94
+]]></stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case name="Example.Tests.GenericTests3.TestInNonGenericInheritingGenericClass33" executed="True" result="Success" success="True" time="17.001" asserts="0">
+                    <categories>
+                      <category name="ShouldRun" />
+                    </categories>
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.GenericTests3.TestInNonGenericInheritingGenericClass34" executed="True" result="Success" success="True" time="20.001" asserts="0">
+                    <categories>
+                      <category name="Other" />
+                    </categories>
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="GenericTests4" executed="True" result="Failure" success="False" time="0.014" asserts="0">
+                <results>
+                  <test-case name="Example.Tests.GenericTests4.GenericTestsBase`1.StandardInsideGeneric" executed="True" result="Success" success="True" time="29.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-suite type="ParameterizedTest" name="GenericWithInput" executed="True" result="Failure" success="False" time="0.001" asserts="0">
+                    <results>
+                      <test-case name="Example.Tests.GenericTests4.GenericWithInput&lt;TInner&gt;()" executed="False" result="NotRunnable">
+                        <reason>
+                          <message><![CDATA[No arguments were provided]]></message>
+                        </reason>
+                      </test-case>
+                    </results>
+                  </test-suite>
+                  <test-case name="Example.Tests.GenericTests4.TestInNonGenericInheritingGenericClass40" executed="True" result="Failure" success="False" time="11.001" asserts="0">
+                    <categories>
+                      <category name="DontRun" />
+                    </categories>
+                    <failure>
+                      <message><![CDATA[]]></message>
+                      <stack-trace><![CDATA[at Example.Tests.GenericTests4.TestInNonGenericInheritingGenericClass40() in c:\Users\Sebastian\Documents\GitHub\Mandolin\src\Example.Tests\Tests.cs:line 103
+]]></stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case name="Example.Tests.GenericTests4.TestInNonGenericInheritingGenericClass41" executed="True" result="Success" success="True" time="15.001" asserts="0">
+                    <categories>
+                      <category name="MustRun" />
+                    </categories>
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.GenericTests4.TestInNonGenericInheritingGenericClass42" executed="True" result="Failure" success="False" time="14.001" asserts="0">
+                    <categories>
+                      <category name="NeverRun" />
+                    </categories>
+                    <failure>
+                      <message><![CDATA[]]></message>
+                      <stack-trace><![CDATA[at Example.Tests.GenericTests4.TestInNonGenericInheritingGenericClass42() in c:\Users\Sebastian\Documents\GitHub\Mandolin\src\Example.Tests\Tests.cs:line 105
+]]></stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case name="Example.Tests.GenericTests4.TestInNonGenericInheritingGenericClass43" executed="True" result="Success" success="True" time="22.001" asserts="0">
+                    <categories>
+                      <category name="ShouldRun" />
+                    </categories>
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.GenericTests4.TestInNonGenericInheritingGenericClass44" executed="True" result="Success" success="True" time="26.001" asserts="0">
+                    <categories>
+                      <category name="Other" />
+                    </categories>
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                </results>
+              </test-suite>
+              <test-suite type="GenericFixture" name="GenericTestsBase&lt;T&gt;" executed="False" result="NotRunnable">
+                <reason>
+                  <message><![CDATA[Generic fixture has no type arguments provided]]></message>
+                </reason>
+              </test-suite>
+              <test-suite type="TestFixture" name="Tests0" executed="True" result="Success" success="True" time="16.010" asserts="0">
+                <categories>
+                  <category name="ShouldRun" />
+                </categories>
+                <results>
+                  <test-case name="Example.Tests.Tests0.Test00" executed="True" result="Success" success="True" time="14.501" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.Tests0.Test01" executed="True" result="Success" success="True" time="19.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.Tests0.Test02" executed="True" result="Success" success="True" time="22.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.Tests0.Test03" executed="True" result="Success" success="True" time="17.041" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.Tests0.Test04" executed="True" result="Success" success="True" time="21.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Tests1" executed="True" result="Success" success="True" time="0.009" asserts="0">
+                <categories>
+                  <category name="ShouldRun" />
+                </categories>
+                <results>
+                  <test-case name="Example.Tests.Tests1.Test10" executed="True" result="Success" success="True" time="10.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.Tests1.Test11" executed="True" result="Success" success="True" time="20.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.Tests1.Test12" executed="True" result="Success" success="True" time="15.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.Tests1.Test13" executed="True" result="Success" success="True" time="17.801" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.Tests1.Test14" executed="True" result="Success" success="True" time="13.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Tests2" executed="True" result="Success" success="True" time="0.009" asserts="0">
+                <categories>
+                  <category name="ShouldRun" />
+                </categories>
+                <results>
+                  <test-case name="Example.Tests.Tests2.Test20" executed="True" result="Success" success="True" time="12.601" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.Tests2.Test21" executed="True" result="Success" success="True" time="16.701" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.Tests2.Test22" executed="True" result="Success" success="True" time="11.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.Tests2.Test23" executed="True" result="Success" success="True" time="21.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.Tests2.Test24" executed="True" result="Success" success="True" time="5.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Tests3" executed="True" result="Success" success="True" time="0.009" asserts="0">
+                <categories>
+                  <category name="ShouldRun" />
+                </categories>
+                <results>
+                  <test-case name="Example.Tests.Tests3.Test30" executed="True" result="Success" success="True" time="8.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.Tests3.Test31" executed="True" result="Success" success="True" time="2.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.Tests3.Test32" executed="True" result="Success" success="True" time="6.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.Tests3.Test33" executed="True" result="Success" success="True" time="5.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.Tests3.Test34" executed="True" result="Success" success="True" time="9.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Tests4" executed="True" result="Success" success="True" time="0.009" asserts="0">
+                <categories>
+                  <category name="ShouldRun" />
+                </categories>
+                <results>
+                  <test-case name="Example.Tests.Tests4.Test40" executed="True" result="Success" success="True" time="23.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.Tests4.Test41" executed="True" result="Success" success="True" time="19.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.Tests4.Test42" executed="True" result="Success" success="True" time="21.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.Tests4.Test43" executed="True" result="Success" success="True" time="26.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                  <test-case name="Example.Tests.Tests4.Test44" executed="True" result="Success" success="True" time="13.001" asserts="0">
+                    <reason>
+                      <message><![CDATA[]]></message>
+                    </reason>
+                  </test-case>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

@@ -56,7 +56,9 @@
   <ItemGroup>
     <Compile Include="Console\ArgumentPreProcessorTests.cs" />
     <Compile Include="Runners\NUnitConsoleCommandLineArgumentSlicerTests.cs" />
-    <Compile Include="Slicers\PartitionSlicerTests.cs" />
+    <Compile Include="Slicers\GreedyPartitionSlicerIntegrationTests.cs" />
+    <Compile Include="Slicers\GreedyPartitionSlicerTests.cs" />
+    <Compile Include="Slicers\Scorer\NUnitResultXmlScorerTests.cs" />
     <Compile Include="Slicers\SequentialGroupTests.cs" />
     <Compile Include="Slicers\AlternatingSlicerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,6 +75,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ExampleTestResult.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Mandolin.Slicers.Scorer;
 
     public class GreedyPartitionSlicer
         : ISlicer
@@ -22,9 +23,9 @@
                                orderby scoredEntry.Item2 descending 
                                select scoredEntry;
             
-            var partitionTable = new List<List<Tuple<string, int>>>(
+            var partitionTable = new List<List<Tuple<string, long>>>(
                     Enumerable.Range(0, totalSlices)
-                                .Select(_ => new List<Tuple<string, int>>())
+                                .Select(_ => new List<Tuple<string, long>>())
                 );
             foreach (var entry in scoredSample)
             {

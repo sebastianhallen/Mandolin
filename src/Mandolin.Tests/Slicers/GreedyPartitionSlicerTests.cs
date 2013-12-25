@@ -7,10 +7,11 @@
     using System.Threading.Tasks;
     using FakeItEasy;
     using Mandolin.Slicers;
+    using Mandolin.Slicers.Scorer;
     using NUnit.Framework;
 
     [TestFixture]
-    public class PartitionSlicerTests
+    public class GreedyPartitionSlicerTests
     {
         [UnderTest] private GreedyPartitionSlicer slicer;
         [Fake] private IPartitionScorer scorer;
@@ -43,7 +44,7 @@
         [TestCase(new[] { "A", "B", "C" }, new[] { 1, 2, 3 }, 2, 2, new[] {"A", "B"})]
         public void Should_be_able_to_partition_sample_greedily_using_score(string[] sample, int[] score, int wantedSlice, int totalSlices, string[] expectedSlice)
         {
-            A.CallTo(() => this.scorer.Score(A<string>._)).ReturnsNextFromSequence(score);
+            A.CallTo(() => this.scorer.Score(A<string>._)).ReturnsNextFromSequence(score.Select(i => (long)i).ToArray());
 
             var slice = this.slicer.Slice(sample, wantedSlice, totalSlices);
 

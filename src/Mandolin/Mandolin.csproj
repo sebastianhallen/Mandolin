@@ -73,7 +73,12 @@
     <Compile Include="Slicers\AlternatingSlicer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Slicers\GreedyPartitionSlicer.cs" />
-    <Compile Include="Slicers\IPartitionScorer.cs" />
+    <Compile Include="Slicers\Scorer\DirectoryScanningNUnitResultsRepository.cs" />
+    <Compile Include="Slicers\Scorer\INUnitResult.cs" />
+    <Compile Include="Slicers\Scorer\INUnitResultsRepository.cs" />
+    <Compile Include="Slicers\Scorer\IPartitionScorer.cs" />
+    <Compile Include="Slicers\Scorer\NUnitResult.cs" />
+    <Compile Include="Slicers\Scorer\NUnitResultXmlScorer.cs" />
     <Compile Include="Slicers\SequentialGroupsSlicer.cs" />
     <Compile Include="ISlicer.cs" />
   </ItemGroup>
