@@ -20,7 +20,7 @@
         {
             if (string.IsNullOrWhiteSpace(this.path)) return Enumerable.Empty<INUnitResult>();
 
-            return from file in Directory.GetFiles(path, "*.xml")
+            return from file in Directory.GetFiles(path, "*.xml", SearchOption.AllDirectories)
                         let xml = ParseXml(file)
                         from testCase in xml.Descendants(XName.Get("test-case"))
                         let name = testCase.Attribute("name").Value
