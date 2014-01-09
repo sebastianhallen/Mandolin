@@ -91,17 +91,20 @@
                 .That.IsSameSequenceAs(new [] { "test1", "test2"} ))).MustHaveHappened();
         }
 
-		//[Test]
-		//public void Should_not_explode_when_given_two_assemblies_on_the_same_drive()
-		//{
-		//	var assemblies = new []
-		//		{
-		//			"Mandolin.Console.exe",
-		//			"Mandolin.dll"
-		//		}.Select(asm => Path.Combine(AssemblyDirectory, asm));
-			
-			
-		//}
+		[Test]
+		public void Should_not_explode_when_given_two_assemblies_on_the_same_drive()
+		{
+			var assemblies = new[]
+				{
+					"Mandolin.Console.exe",
+					"Mandolin.dll"
+				}.Select(asm => Path.Combine(AssemblyDirectory, asm)).ToArray();
+			string[] slicedArgs;
+
+			this.argumentSlicer.Slice(assemblies, 1, 1, out slicedArgs);
+
+			Assert.That(slicedArgs, Is.EquivalentTo(assemblies.Concat(new [] { "/run:NoMatchingTestsInSlice" })));
+		}
 
 		public static string AssemblyDirectory
 		{

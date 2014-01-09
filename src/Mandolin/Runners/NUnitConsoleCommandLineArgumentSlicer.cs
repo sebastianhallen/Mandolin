@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using NUnit.ConsoleRunner;
 
@@ -76,6 +77,11 @@
 
         private static KeyValuePair<string, string> ToArgumentPair(string arg)
         {
+			if (File.Exists(arg))
+			{
+				return new KeyValuePair<string, string>(arg, null);
+			}
+
             var colonIndex = arg.IndexOf(':');
             var equalsIndex = arg.IndexOf('=');
 
