@@ -1,6 +1,10 @@
 ﻿namespace Mandolin.Tests.Runners
 {
-    using FakeItEasy;
+	using System;
+	using System.IO;
+	using System.Linq;
+	using System.Reflection;
+	using FakeItEasy;
     using Mandolin.Runners;
     using NUnit.ConsoleRunner;
     using NUnit.Framework;
@@ -86,5 +90,28 @@
             A.CallTo(() => this.runListBuilder.CreateRunList(A<IEnumerable<string>>
                 .That.IsSameSequenceAs(new [] { "test1", "test2"} ))).MustHaveHappened();
         }
+
+		//[Test]
+		//public void Should_not_explode_when_given_two_assemblies_on_the_same_drive()
+		//{
+		//	var assemblies = new []
+		//		{
+		//			"Mandolin.Console.exe",
+		//			"Mandolin.dll"
+		//		}.Select(asm => Path.Combine(AssemblyDirectory, asm));
+			
+			
+		//}
+
+		public static string AssemblyDirectory
+		{
+			get
+			{
+				string codeBase = Assembly.GetExecutingAssembly().CodeBase;
+				UriBuilder uri = new UriBuilder(codeBase);
+				string path = Uri.UnescapeDataString(uri.Path);
+				return Path.GetDirectoryName(path);
+			}
+		}
     }
 }
