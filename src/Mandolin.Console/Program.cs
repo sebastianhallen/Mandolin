@@ -1,5 +1,6 @@
 ﻿namespace Mandolin.Console
 {
+    using System;
     using System.Collections.Generic;
     using Mandolin.Runners;
     using NUnit.Core;
@@ -9,6 +10,7 @@
     {
         static void Main(string[] args)
         {
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(OnUnhandledException);
             CoreExtensions.Host.InitializeService();
 
             List<string> cleanedArguments;
@@ -26,6 +28,16 @@
             var result = nunitConsoleRunner.Run(currentSliceNumber, totalNumberOfSlices);
 
             Console.WriteLine(result);
+        }
+
+        private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Console.WriteLine("FATAL ERROR");
+            if (e.IsTerminating)
+            {
+                Console.WriteLine("Terminating Mandolin");
+            }
+            Console.WriteLine(e.ExceptionObject);
         }
     }
 }
