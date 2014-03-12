@@ -23,17 +23,7 @@
                 }
                 else
                 {
-                    string assembly = null;
-                    if (TryGetSliceFromMagicStringNamedAssembly(arg, out candidateSliceNumber, out candidateTotalNumberOfSlices, out assembly))
-                    {
-                        currentSliceNumber = candidateSliceNumber;
-                        totalNumberOfSlices = candidateTotalNumberOfSlices;
-                        transformedArguments.Add(assembly);
-                    }
-                    else
-                    {
-                        transformedArguments.Add(arg);
-                    }
+                    transformedArguments.Add(arg);
                 }
             }
 
@@ -42,30 +32,6 @@
                 currentSliceNumber = 1;
                 totalNumberOfSlices = 1;
             }
-        }
-
-        private static bool TryGetSliceFromMagicStringNamedAssembly(string arg, out int candidateSliceNumber, out int candidateTotalNumberOfSlices, out string assembly)
-        {
-            candidateSliceNumber = 0;
-            candidateTotalNumberOfSlices = 0;
-            assembly = null;
-
-            const string magicStringPrefix = "slice-with-mandolin--slice-";
-            var assemblies = arg.Split(',');
-            var magicStringAssemblies = assemblies
-                                            .Where(asm => asm.Contains(magicStringPrefix))
-                                            .Select(asm => asm.Replace(magicStringPrefix, ""))
-                                            .ToArray();
-
-            var slice = magicStringAssemblies.FirstOrDefault();
-
-            if (slice != null && TryGetSlice("/slice:" + slice, out candidateSliceNumber, out candidateTotalNumberOfSlices))
-            {
-                assembly = string.Join(",", assemblies.Where(asm => !asm.Contains(magicStringPrefix)));
-                return true;
-            }
-
-            return false;
         }
 
         private static bool TryGetSlice(string arg, out int currentSlice, out int totalSlices)
