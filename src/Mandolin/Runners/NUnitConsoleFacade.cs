@@ -1,5 +1,6 @@
 ﻿namespace Mandolin.Runners
 {
+    using System;
     using NUnit.ConsoleRunner;
 
     public class NUnitConsoleFacade
@@ -7,7 +8,15 @@
     {
         public int Run(string[] args)
         {
-            return Runner.Main(args);
+            try
+            {
+                return Runner.Main(args);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Crashed when running tests: " + Environment.NewLine + ex);
+                return -1;
+            }
         }
     }
 }
