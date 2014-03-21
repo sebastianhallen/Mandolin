@@ -32,12 +32,18 @@
 
         private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            Console.WriteLine("FATAL ERROR");
-            if (e.IsTerminating)
+            var message = string.Format("(Mandolin) Unhandled exception: {0}", e.ExceptionObject);
+            try
             {
-                Console.WriteLine("Terminating Mandolin");
+                Console.WriteLine(message);
             }
-            Console.WriteLine(e.ExceptionObject);
+            finally
+            {
+                if (e.IsTerminating)
+                {
+                    Environment.FailFast(message);
+                }
+            }
         }
     }
 }
