@@ -3,9 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public interface IRunListBuilder
     {
@@ -51,8 +48,8 @@
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Unable to delete run list file: " + this.Path);
-                Console.WriteLine(ex.ToString());
+                Notify.WriteLine("Unable to delete run list file: " + this.Path);
+                Notify.WriteLine(ex.ToString());
             }
         }
 
@@ -61,6 +58,7 @@
         private void PopulateRunFile(IEnumerable<string> testMethods)
         {
             var content = string.Join(Environment.NewLine, testMethods);
+            Notify.WriteLine("Run list: {0}{1}", Environment.NewLine, content);
             File.WriteAllText(this.Path, content);
         }
     }

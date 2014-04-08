@@ -98,7 +98,7 @@
 
             if (options.run != null && options.run != string.Empty)
             {
-                Console.WriteLine("Selected test(s): " + options.run);
+                Notify.WriteLine("Selected test(s): " + options.run);
 
                 foreach (string name in TestNameParser.Parse(options.run))
                     nameFilter.Add(name);
@@ -108,7 +108,7 @@
 
             if (options.runlist != null && options.runlist != string.Empty)
             {
-                Console.WriteLine("Run list: " + options.runlist);
+                Notify.WriteLine("Run list: " + options.runlist);
 
                 try
                 {
@@ -129,7 +129,7 @@
                 {
                     if (e is FileNotFoundException || e is DirectoryNotFoundException)
                     {
-                        Console.WriteLine("Unable to locate file: " + options.runlist);
+                        Notify.WriteLine("Unable to locate file: " + options.runlist);
                         return false;
                     }
                     throw;
@@ -141,7 +141,7 @@
             if (options.include != null && options.include != string.Empty)
             {
                 TestFilter includeFilter = new CategoryExpression(options.include).Filter;
-                Console.WriteLine("Included categories: " + includeFilter.ToString());
+                Notify.WriteLine("Included categories: " + includeFilter.ToString());
 
                 if (testFilter.IsEmpty)
                     testFilter = includeFilter;
@@ -152,7 +152,7 @@
             if (options.exclude != null && options.exclude != string.Empty)
             {
                 TestFilter excludeFilter = new NotFilter(new CategoryExpression(options.exclude).Filter);
-                Console.WriteLine("Excluded categories: " + excludeFilter.ToString());
+                Notify.WriteLine("Excluded categories: " + excludeFilter.ToString());
 
                 if (testFilter.IsEmpty)
                     testFilter = excludeFilter;

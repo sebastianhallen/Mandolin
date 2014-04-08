@@ -2,6 +2,6 @@
 {
     public interface IMandolinRunner
     {
-        string Run(int wantedSlice, int totalSlices);
+        int Run(int wantedSlice, int totalSlices);
     }
 }

@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using Mandolin.Runners;
     using NUnit.Core;
-    using Console = System.Console;
 
     class Program
     {
@@ -27,7 +26,8 @@
 
             var result = nunitConsoleRunner.Run(currentSliceNumber, totalNumberOfSlices);
 
-            Console.WriteLine(result);
+            Notify.WriteLine("Exit code: " + result);
+            Environment.Exit(result);
         }
 
         private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -35,7 +35,7 @@
             var message = string.Format("(Mandolin) Unhandled exception: {0}", e.ExceptionObject);
             try
             {
-                Console.WriteLine(message);
+                Notify.WriteLine(message);
             }
             finally
             {

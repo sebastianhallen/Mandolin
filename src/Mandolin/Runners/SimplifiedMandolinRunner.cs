@@ -10,7 +10,7 @@
     using NUnit.Util;
 
     public class SimplifiedMandolinRunner
-        : IMandolinRunner
+        //: IMandolinRunner
     {
         private readonly ISlicer slicer;
         private readonly EventListener eventListener;
