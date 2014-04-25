@@ -6,7 +6,7 @@
 
     internal class SlicerFactory
     {
-        public static ISlicer GetSlicer()
+        public ISlicer GetSlicer()
         {
             var wantedSlicerSetting = ConfigurationManager.AppSettings.Get("slicer");
             switch (wantedSlicerSetting)
