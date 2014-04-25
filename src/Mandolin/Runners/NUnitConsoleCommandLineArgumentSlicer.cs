@@ -10,12 +10,14 @@
     {
         private readonly ISlicer slicer;
         private readonly ITestSuiteExtractor suiteExtractor;
+	    private readonly IRunListFilter preFilter;
         private readonly IRunListBuilder runListBuilder;
 
-        public NUnitConsoleCommandLineArgumentSlicer(ISlicer slicer, ITestSuiteExtractor suiteExtractor, IRunListBuilder runListBuilder)
+		public NUnitConsoleCommandLineArgumentSlicer(ISlicer slicer, ITestSuiteExtractor suiteExtractor, IRunListFilter preFilter, IRunListBuilder runListBuilder)
         {
             this.slicer = slicer;
             this.suiteExtractor = suiteExtractor;
+			this.preFilter = preFilter;
             this.runListBuilder = runListBuilder;
         }
 
@@ -23,6 +25,7 @@
         {
             var options = new ConsoleOptions(args);
             var matchingTests = this.suiteExtractor.FindMatchingTests(options, options.Parameters.OfType<string>().ToArray());
+	        var filteredTests = this.preFilter.Filter(matchingTests);
 
             var slice = this.slicer.Slice(matchingTests, wantedSlice, totalSlices);
 

@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Console\ArgumentPreProcessorTests.cs" />
+    <Compile Include="Runners\DefaultRunListFilterTests.cs" />
     <Compile Include="Runners\NUnitConsoleCommandLineArgumentSlicerTests.cs" />
     <Compile Include="Slicers\GreedyPartitionSlicerIntegrationTests.cs" />
     <Compile Include="Slicers\GreedyPartitionSlicerTests.cs" />

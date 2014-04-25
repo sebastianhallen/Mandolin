@@ -19,8 +19,9 @@
 
             var slicer = SlicerFactory.GetSlicer();
             var suiteExtractor = new TestSuiteExtractor();
+	        var preFilter = new DefaultRunListFilter();
             var runListBuilder = new DefaultRunListBuilder();
-            var argumentSlicer = new NUnitConsoleCommandLineArgumentSlicer(slicer, suiteExtractor, runListBuilder);
+            var argumentSlicer = new NUnitConsoleCommandLineArgumentSlicer(slicer, suiteExtractor, preFilter, runListBuilder);
 
             var nunitConsoleRunner = new NUnitConsoleMandolinRunner(new NUnitConsoleFacade(), argumentSlicer, cleanedArguments.ToArray());
 

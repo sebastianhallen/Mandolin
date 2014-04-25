@@ -15,6 +15,7 @@
     {
         [UnderTest] private NUnitConsoleCommandLineArgumentSlicer argumentSlicer;
         [Fake] private ISlicer slicer;
+	    [Fake] private IRunListFilter preFilter;
         [Fake] private ITestSuiteExtractor suiteExtractor;
         [Fake] private IRunListBuilder runListBuilder;
 
@@ -106,7 +107,18 @@
 			Assert.That(slicedArgs, Is.EquivalentTo(assemblies.Concat(new [] { "/run:NoMatchingTestsInSlice" })));
 		}
 
-		public static string AssemblyDirectory
+	    [Test]
+	    public void Should_pre_filter_run_list()
+	    {
+		    var assemblies = new[] {"foo.dll"};
+			string[] _;
+		    
+			this.argumentSlicer.Slice(assemblies, 1, 1, out _);
+
+			A.CallTo(() => this.preFilter.Filter(A<IEnumerable<string>>._)).MustHaveHappened();
+	    }
+
+	    public static string AssemblyDirectory
 		{
 			get
 			{
