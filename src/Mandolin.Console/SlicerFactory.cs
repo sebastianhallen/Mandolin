@@ -1,7 +1,7 @@
 ﻿namespace Mandolin.Console
 {
-    using System.Configuration;
-    using Mandolin.Slicers;
+	using System.Configuration;
+	using Mandolin.Slicers;
     using Mandolin.Slicers.Scorer;
 
     internal class SlicerFactory

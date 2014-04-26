@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mandolin.Tests", "Mandolin.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mandolin.Console", "Mandolin.Console\Mandolin.Console.csproj", "{64372A6A-7122-43C7-A735-F2578592804E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.Test", "Plugin.Test\Plugin.Test.csproj", "{E6542ABD-F1AE-4444-ABB2-5792275BCD2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,10 @@ Global
 		{64372A6A-7122-43C7-A735-F2578592804E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64372A6A-7122-43C7-A735-F2578592804E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64372A6A-7122-43C7-A735-F2578592804E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6542ABD-F1AE-4444-ABB2-5792275BCD2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6542ABD-F1AE-4444-ABB2-5792275BCD2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6542ABD-F1AE-4444-ABB2-5792275BCD2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6542ABD-F1AE-4444-ABB2-5792275BCD2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

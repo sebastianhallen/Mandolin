@@ -22,10 +22,11 @@
 			{
 				var slicer = bootstrap.Resolve<ISlicer>();
 				var suiteExtractor = bootstrap.Resolve<ITestSuiteExtractor>();
-				var preFilter = bootstrap.Resolve<IRunListFilter>();
 				var runListBuilder = bootstrap.Resolve<IRunListBuilder>();
-				
-				var argumentSlicer = new NUnitConsoleCommandLineArgumentSlicer(slicer, suiteExtractor, preFilter, runListBuilder);
+				var filterFactory = bootstrap.Resolve<RunListFilterFactory>();
+				var filter = filterFactory.GetFilter();
+
+				var argumentSlicer = new NUnitConsoleCommandLineArgumentSlicer(slicer, suiteExtractor, filter, runListBuilder);
 				var nunitConsoleRunner = new NUnitConsoleMandolinRunner(new NUnitConsoleFacade(), argumentSlicer, cleanedArguments.ToArray());
 
 				result = nunitConsoleRunner.Run(currentSliceNumber, totalNumberOfSlices);
