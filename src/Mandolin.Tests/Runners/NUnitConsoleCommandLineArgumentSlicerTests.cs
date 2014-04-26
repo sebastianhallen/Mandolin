@@ -41,7 +41,7 @@
         }
 
         [Test]
-        public void Should_use_matching_tests_from_suite_extractor_when_slicing()
+        public void Should_use_matching_tests_from_suite_extractor_when_filtering()
         {
             var matchingTests = A.Fake<IEnumerable<string>>();
             A.CallTo(() => this.suiteExtractor.FindMatchingTests(A<ConsoleOptions>._, A<string[]>._)).Returns(matchingTests);
@@ -49,7 +49,7 @@
             string[] _;
             this.argumentSlicer.Slice(new [] {"some.dll"}, 10, 20, out _);
 
-            A.CallTo(() => this.slicer.Slice(matchingTests, 10, 20)).MustHaveHappened();
+            A.CallTo(() => this.preFilter.Filter(matchingTests)).MustHaveHappened();
         }
 
         [TestCase("/xml:C:\\somexml=output:with-a-rouge-colon=", "/xml:C:\\somexml=output:with-a-rouge-colon=")]
@@ -116,6 +116,19 @@
 			this.argumentSlicer.Slice(assemblies, 1, 1, out _);
 
 			A.CallTo(() => this.preFilter.Filter(A<IEnumerable<string>>._)).MustHaveHappened();
+	    }
+
+	    [Test]
+	    public void Should_use_result_from_runlist_filter_when_slicing()
+		{
+			var filtered = A.Fake<IEnumerable<string>>();
+			var assemblies = new[] { "foo.dll" };
+		    A.CallTo(() => this.preFilter.Filter(A<IEnumerable<string>>._)).Returns(filtered);
+
+			string[] _;
+			this.argumentSlicer.Slice(assemblies, 1, 1, out _);
+
+		    A.CallTo(() => this.slicer.Slice(filtered, 1, 1)).MustHaveHappened();
 	    }
 
 	    public static string AssemblyDirectory

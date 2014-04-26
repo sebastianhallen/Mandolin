@@ -27,7 +27,7 @@
             var matchingTests = this.suiteExtractor.FindMatchingTests(options, options.Parameters.OfType<string>().ToArray());
 	        var filteredTests = this.preFilter.Filter(matchingTests);
 
-            var slice = this.slicer.Slice(matchingTests, wantedSlice, totalSlices);
+			var slice = this.slicer.Slice(filteredTests, wantedSlice, totalSlices);
 
             return this.ReAssembleArguments(args, slice, out slicedArgs);
         }
